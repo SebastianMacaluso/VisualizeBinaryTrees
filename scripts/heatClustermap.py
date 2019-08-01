@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from scripts import linkageList
+from scripts import reclusterTree
 
 def heat_dendrogram(truthJet=None, recluster_jet1=None, recluster_jet2=None, heat_map=True, full_path=False, FigName = None):
 
@@ -21,7 +22,13 @@ def heat_dendrogram(truthJet=None, recluster_jet1=None, recluster_jet2=None, hea
 
 	else:
 
-		ancestors1 = recluster_jet1["tree_ancestors"]
+		# reclustKt = reclusterTree.recluster(truth_jet, alpha=1)
+		reclustjet = reclusterTree.recluster(recluster_jet1, alpha=int(recluster_jet1["algorithm"]), save=False)
+		# reclustCA = reclusterTree.recluster(truth_jet, alpha=0)
+
+		ancestors1 = reclustjet["tree_ancestors"]
+
+		# ancestors1 = recluster_jet1["tree_ancestors"]
 		level_length = [len(entry) for entry in ancestors1]
 		max_level = np.max(level_length)
 
@@ -49,25 +56,28 @@ def heat_dendrogram(truthJet=None, recluster_jet1=None, recluster_jet2=None, hea
 				                              (max_level - np.minimum(neg_entries[i], neg_entries[j])))
 				heat_data[j, i] = heat_data[i, j]
 
+
 	if truthJet:
-		print('---' * 20)
-		print('truth heat data ----  alpha row: truth -- alpha column:', 'truth')
-		sns.clustermap(
-			heat_data,
-			row_cluster=True,
-			col_cluster=True,
-			row_linkage=truthJet["linkage_list"],
-			col_linkage=truthJet["linkage_list"],
-		)
 
-		if FigName:
-			plt.savefig(str(FigName))
+		if not recluster_jet1:
+			# print('---' * 20)
+			print('truth heat data ----  alpha row: truth -- alpha column:', 'truth')
+			sns.clustermap(
+				heat_data,
+				row_cluster=True,
+				col_cluster=True,
+				row_linkage=truthJet["linkage_list"],
+				col_linkage=truthJet["linkage_list"],
+			)
 
-		plt.show()
+			if FigName:
+				plt.savefig(str(FigName))
+
+			plt.show()
 
 		if recluster_jet1:
 
-			print('---' * 20)
+			# print('---' * 20)
 			print('alpha row:', recluster_jet1["algorithm"], '-- alpha column:', 'truth')
 			sns.clustermap(
 				heat_data,
@@ -76,26 +86,44 @@ def heat_dendrogram(truthJet=None, recluster_jet1=None, recluster_jet2=None, hea
 				row_linkage=recluster_jet1["linkage_list"],
 				col_linkage=truthJet["linkage_list"],
 			)
+
+			if FigName:
+				plt.savefig(str(FigName))
+
 			plt.show()
 
 
 	else:
-		print('---' * 20)
-		print('alpha row:', recluster_jet1["algorithm"], '-- alpha column:', recluster_jet1["algorithm"])
-		sns.clustermap(
-			heat_data,
-			row_cluster=True,
-			col_cluster=True,
-			row_linkage=recluster_jet1["linkage_list"],
-			col_linkage=recluster_jet1["linkage_list"],
-		)
-		plt.show()
+		if not recluster_jet2:
+			# print('---' * 20)
+			print('alpha row:', reclustjet["algorithm"], '-- alpha column:', reclustjet["algorithm"])
+			sns.clustermap(
+				heat_data,
+				row_cluster=True,
+				col_cluster=True,
+				row_linkage=reclustjet["linkage_list"],
+				col_linkage=reclustjet["linkage_list"],
+			)
+			if FigName:
+				plt.savefig(str(FigName))
+
+			plt.show()
 
 		if recluster_jet2:
-			print('---' * 20)
-			print('alpha row:', recluster_jet2["algorithm"], '-- alpha column:', recluster_jet1["algorithm"])
+
+			reclustjet2 = reclusterTree.recluster(recluster_jet1, alpha=int(recluster_jet2["algorithm"]), save=False)
+			# reclustCA = reclusterTree.recluster(truth_jet, alpha=0)
+
+			# ancestors1 = reclustjet["tree_ancestors"]
+
+			# print('---' * 20)
+			print('alpha row:', reclustjet2["algorithm"], '-- alpha column:', reclustjet["algorithm"])
 			sns.clustermap(heat_data, pivot_kws=None, z_score=None,
 			               standard_scale=None, figsize=None, cbar_kws=None, row_cluster=True, col_cluster=True,
-			               row_linkage=recluster_jet2["linkage_list"], col_linkage=recluster_jet1["linkage_list"],
+			               row_linkage=reclustjet2["linkage_list"], col_linkage=reclustjet["linkage_list"],
 			               row_colors=None, col_colors=None, mask=None)
+
+			if FigName:
+				plt.savefig(str(FigName))
+
 			plt.show()

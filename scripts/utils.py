@@ -1,7 +1,7 @@
 import logging
 
 
-def get_logger(name=__file__, level=logging.INFO):
+def get_logger(name=__file__, level=logging.DEBUG):
     logger = logging.getLogger(name)
 
     if getattr(logger, "_init_done__", None):
@@ -21,3 +21,9 @@ def get_logger(name=__file__, level=logging.INFO):
     logger.addHandler(handler)
 
     return logger
+
+
+
+# logger = logging.getLogger()
+# logger.setLevel(logging.DEBUG)
+# logging.debug("test")

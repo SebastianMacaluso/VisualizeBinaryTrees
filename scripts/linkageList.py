@@ -1,16 +1,22 @@
 import sys
-
 import numpy as np
 import logging
 import pickle
+import logging
+
+from scripts.utils import get_logger
+
+logger = get_logger(level=logging.INFO)
 
 
 def draw_truth(in_jet):
 	"""
-	Build linkage list for the truth jet tree.
+	Build linkage list for the truth jet tree only.
+	This is a special case because we build the linkage list from a top down approach.
+	(Typically it is built from a bottom-up approach)
 
 	Args:
-	- input jet dictionary with the tree, content arrays, etc.
+	- input jet dictionary.
 
 
 	"""
@@ -21,27 +27,33 @@ def draw_truth(in_jet):
 
 	N = outers_node_id[-1]
 	Nleaves = len(outers_node_id)
+	# print("N=",N)
+	# print("Nleaves =",Nleaves)
 	const_list = np.arange(Nleaves)
 	temp_outers_node_id = outers_node_id
 	idx = np.asarray(outers_node_id)
 	temp = []
-	sibling_pairs = np.asarray(list(in_jet["parent_child"].values()))[::-1]
+	sibling_pairs = np.asarray(list(in_jet["parent_child"].values()))[::-1] # All sibling pairs node idxs
+	logger.debug(f"sibling_pairs = {sibling_pairs}")
 	N_leaves_list = np.ones((Nleaves))
 	linkage_list = []
 	waitlist = {}
 	j = 0
 	m = 0
+
+	# Start from the last leaf and build the linkage list going backwards
 	for i in range(N, 0, -1):
 		m += 1
-		node = np.where(sibling_pairs == i)
-		sibling = sibling_pairs[node[0], 1 - node[1]]
-		#         print('node =', node)
-		#         print('sibling = ', sibling)
-		node_pos = None
+		node = np.where(sibling_pairs == i) # Get location of node in sibling_pairs list
+		sibling = sibling_pairs[node[0], 1 - node[1]] # Get sibling node idx
 
+		logger.debug(f"Location of node in sibling_pairs list = {node}")
+		logger.debug(f"sibling = {sibling}")
+
+		node_pos = None
 		if i in temp_outers_node_id:
 			node_pos = np.where(idx == i)[0][0]
-			temp_outers_node_id = np.delete(temp_outers_node_id, node_pos)
+			temp_outers_node_id = np.delete(temp_outers_node_id, node_pos) # If i is the idx of a leaf, then delete i from list of leaves
 
 		else:
 			const_list = np.append(const_list, Nleaves + j)
