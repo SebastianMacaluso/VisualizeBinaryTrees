@@ -33,7 +33,7 @@ Below we show diffrent visualizations and comparisons of the same jet (also the 
 
 ##### Fig. 1: ##### Fig. 1: Tree visualization of a sample jet generated with our model that represents a W boson jet. We show the values of **p** =(p_y,p_z) for each node and the scale Delta for the splitting of the inner nodes. The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the tree (and is not related to the particle momentum **p**).
 
- <img src="https://github.com/SebastianMacaluso/VisualizeBinaryTrees/blob/master/plots/1DTreeOnly/figAntikt_jet10.png" height="500" align="center">
+ <img src="https://github.com/SebastianMacaluso/VisualizeBinaryTrees/blob/master/plots/1DTreeOnly/figAntikt_jet10.png" height="800" width="800" align="center">
  
 ![Fig.1D2](plots/1DTreeOnly/figAntikt_jet10.png)
 
