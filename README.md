@@ -20,25 +20,35 @@ There are three main notebooks:
 
 3) [`visualizeClusterMap.ipynb`](visualizeClusterMap.ipynb): contains the *2D heat clustermaps* of the jets.
 
-Below, we will show different visualizations of the same jet and the different options between truth data  {kt, CA, antikt} clustering algorithms.
+Below, we will show different visualizations of the same jet that represents a W boson jet in the [`Toy Generative Model`](https://github.com/SebastianMacaluso/ToyJetsShower), and the different options between truth data  {kt, CA, antikt} clustering algorithms.
 
 ## 1D Tree-only visualizations
 
 Given a tree structure, *1D tree-only* plots of the tree (with nodes and edges) are generated.
 
+There are 2 functions for visualization:
 
-Below we show diffrent visualizations and comparisons of the same jet (also the same jet as in the 2D heat clustermaps visualizations section).
+a) function **visualizeTreePair**: generates a tree with nodes and edges using graphviz Digraph.
+
+b) function **visualizeTreePair**: compares 2 trees (top/bottom) by calling the plotBinaryTree function.
+
+There are many examples showing how to use these functions in the notebook.
+
+Below we show different 1D Tree-only visualizations of a sample jet generated with our model that represents a W boson jet (also the same jet as in the 2D heat clustermaps visualizations section).  We show the values of **p** =(p_y,p_z) for each node and the scale Delta for the splitting of the inner nodes (for the truth jet data).
 
 ![Fig.1D1](plots/1DTreeOnly/figTruth_jet10.png)
 
-##### Fig. 1: ##### Fig. 1: Tree visualization of a sample jet generated with our model that represents a W boson jet. We show the values of **p** =(p_y,p_z) for each node and the scale Delta for the splitting of the inner nodes. The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the tree (and is not related to the particle momentum **p**).
+##### Fig. 1: 1D Tree-only visualization of the truth level tree for a sample jet generated with our model. The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the truth tree (and is not related to the particle momentum **p**).
 
  <img src="https://github.com/SebastianMacaluso/VisualizeBinaryTrees/blob/master/plots/1DTreeOnly/figAntikt_jet10.png" height="800"  align="center">
  
-<!--![Fig.1D2](plots/1DTreeOnly/figAntikt_jet10.png)-->
+ ##### Fig. 2: 1D Tree-only visualization of a sample jet generated with our model that was reclustered with the anti-kt algorithm. We can see the *ladder* like structure that is typically obtained for this algorithm. The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the reclustered tree.
 
 ![Fig.1D3](plots/1DTreeOnly/figComparisonKtTruthTop_jet10.png)
 ![Fig.1D4](plots/1DTreeOnly/figComparisonKtTruthBottom_jet10.png)
+
+##### Fig. 1: 1D Tree-only comparison of a sample jet generated with our model, between the kt reclustered tree (top) and the truth tree (bottom). The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the truth tree.
+
 
 ## 2D heat clustermaps visualizations
 
