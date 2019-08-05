@@ -35,7 +35,7 @@ Below we show diffrent visualizations and comparisons of the same jet (also the 
 
  <img src="https://github.com/SebastianMacaluso/VisualizeBinaryTrees/blob/master/plots/1DTreeOnly/figAntikt_jet10.png" height="800"  align="center">
  
-![Fig.1D2](plots/1DTreeOnly/figAntikt_jet10.png)
+<!--![Fig.1D2](plots/1DTreeOnly/figAntikt_jet10.png)-->
 
 ![Fig.1D3](plots/1DTreeOnly/figComparisonKtTruthTop_jet10.png)
 ![Fig.1D4](plots/1DTreeOnly/figComparisonKtTruthBottom_jet10.png)
