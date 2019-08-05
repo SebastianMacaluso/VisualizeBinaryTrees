@@ -13,7 +13,8 @@ def plotBinaryTree(
 		node_id_in = None,
 		pySort = False,
 		pTSort = False,
-		truthOrder = None
+		truthOrder = None,
+		figFormat = "pdf",
 ):
 	'''
 	Plot a tree with nodes and edges using graphviz Digraph
@@ -38,7 +39,7 @@ def plotBinaryTree(
 		graph_attr={"rank": "flow"},
 		edge_attr={"arrowsize": arrowsize},
 		node_attr={"style": "filled"},
-		format="pdf",
+		format=figFormat,
 	)
 
 
@@ -206,7 +207,8 @@ def visualizeTreePair(
 		pySort = False,
 		pTSort = False,
 		truthOrder=True,
-		label=True
+		label=True,
+		figFormat ="pdf",
 ):
 	'''
 	Call plotBinaryTree function to create a representation of the jet tree with graphviz Digraph.
@@ -254,6 +256,7 @@ def visualizeTreePair(
 		pySort = pySort,
 		pTSort = pTSort,
 		truthOrder = truthOrder,
+		figFormat = figFormat,
 	)
 
 	tree2 = plotBinaryTree(
@@ -261,6 +264,7 @@ def visualizeTreePair(
 		label = label,
 		pySort = pySort,
 		pTSort = pTSort,
+		figFormat= figFormat,
 	)
 
 	return tree1, tree2

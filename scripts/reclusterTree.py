@@ -220,7 +220,7 @@ def dijMinPair(
     (We refer to both leaves and inner nodes as pseudojets.)
 
     Args:
-        - const_list: constituents list for the current level (i.e. deleting the constituents that are merged and
+        - const_list: array with the constituents momentum list for the current level (i.e. deleting the constituents that are merged and
           adding the new pseudojet from merging them)
         - var_dij_history: list with all the previous min{d_ij}
         - tree_dic: dictionary that has the node id of a parent as a key and a list with the id of the 2 children as the values
@@ -343,7 +343,7 @@ def _traverse(
     - tree: Reclustered tree structure.
     - content: Reclustered tree momentum vectors
     - node_id:   list where leaves idxs are added in the order they appear when we traverse the reclustered tree (each number indicates the node id
-    that we picked when we did the reclustering.). However, the idx value specifies the order in which the leaf nodes appear when traversing the truth level jet . The value here is an integer between 0 and Nleaves.
+    that we picked when we did the reclustering.). However, the idx value specifies the order in which the leaf nodes appear when traversing the origianl jet (e.g. truth level) jet . The value here is an integer between 0 and Nleaves.
     So if we went from truth to kt algorithm, then in the truth tree the leaves go as [0,1,2,3,4,,...,Nleaves-1]
     - tree_ancestors: List with one entry for each leaf of the tree, where each entry lists all the ancestor node ids when traversing the tree from the root to the leaf node.
 
@@ -473,8 +473,7 @@ def _traverse_rec(
 
     # If not then its a leaf
     else:
-        node_id.append(
-      root)
+        node_id.append(root)
         if dendrogram:
             tree_ancestors.append(new_ancestors)
             logger.debug(f"tree_ancestors= {tree_ancestors}")
