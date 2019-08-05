@@ -101,7 +101,6 @@ Below we show diffrent visualizations and comparisons of the same jet (also the 
 ##### Fig. 5: Heat clustermap plot of the tree after reclustering with the Anti-kt algorithm.
 
 ![Fig.3](plots/heatClustermap/figDiffTruthKt_singlepath_jet10.png)
-
 ##### Fig. 6: Plot for the heat clustermap difference between the truth jet and the Kt reclustered one. The closer the trees substrucre is, the closer to cero the values in each entry. 
 
 
