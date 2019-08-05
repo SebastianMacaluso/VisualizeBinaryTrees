@@ -117,7 +117,7 @@ Below we show different visualizations and comparisons of the same jet (also the
 
 
 
-**Relevant Structure**:
+## Relevant Structure
 
 - [`binaryTreeStructure.ipynb`](binaryTreeStructure.ipynb): notebook that explains the structure of the jet tree dictionaries.
 - [`visualize1DTree.ipynb`](visualize1DTree.ipynb): contains the *1D tree-only* jet visualizations.
