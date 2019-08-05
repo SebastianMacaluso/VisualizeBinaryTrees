@@ -8,38 +8,41 @@ Note that this is an early development version.
 
 ## Introduction
 
-This is a visualization package for binary trees. In particular, this packages allows to compare visualizations of jets generated with the [`Toy Generative Model for Jets`](https://github.com/SebastianMacaluso/ToyJetsShower) package. 
+This is a visualization package for binary trees. In particular, this package allows to compare visualizations of jets generated with the [`Toy Generative Model for Jets`](https://github.com/SebastianMacaluso/ToyJetsShower) package. 
 
 There are three main notebooks:
 
-1) [`binaryTreeStructure`](binaryTreeStructure.ipynb): this  notebook explains the structure of the jet tree dictionaries (generated with the [`Toy Generative Model`](https://github.com/SebastianMacaluso/ToyJetsShower)  and some examples on how to access the information contained in the dictionaries. Also, any binary tree that satisfies the structure described in this notebook, could be visualized with this package.
+1) [`binaryTreeStructure`](binaryTreeStructure.ipynb): this  notebook explains the structure of the jet tree dictionaries (generated with the [`Toy Generative Model`](https://github.com/SebastianMacaluso/ToyJetsShower) ) and some examples on how to access the information contained in the dictionaries. Also, any binary tree that satisfies the structure described in this notebook, could be visualized with this package.
 
 
-2) [`visualize1DTree.ipynb`](visualize1DTree.ipynb): contains the *1D tree-only* jet visualizations.
+2) [`visualize1DTree`](visualize1DTree.ipynb): contains the *1D tree-only* jet visualizations.
 
 
-3) [`visualizeClusterMap.ipynb`](visualizeClusterMap.ipynb): contains the *2D heat clustermaps* of the jets.
+3) [`visualizeClusterMap`](visualizeClusterMap.ipynb): contains the *2D heat clustermaps* visualizations of the jets.
 
-Below, we will show different visualizations of the same jet that represents a W boson jet in the [`Toy Generative Model`](https://github.com/SebastianMacaluso/ToyJetsShower), and the different options between truth data  {kt, CA, antikt} clustering algorithms.
+Below, we will show different visualizations of the same jet that represents a W boson jet in the [`Toy Generative Model`](https://github.com/SebastianMacaluso/ToyJetsShower), and the different options between truth data and  {kt, CA, antikt} clustering algorithms.
 
 ## 1D Tree-only visualizations
 
-Given a tree structure, *1D tree-only* plots of the tree (with nodes and edges) are generated.
+Given a tree structure, *1D tree-only* plots of the tree (with nodes and edges) are generated in [`visualize1DTree.ipynb`](visualize1DTree.ipynb).
 
 There are 2 functions for visualization:
 
-a) function **visualizeTreePair**: generates a tree with nodes and edges using graphviz Digraph.
+a) function **plotBinaryTree**: generates a tree with nodes and edges using graphviz Digraph.
 
 b) function **visualizeTreePair**: compares 2 trees (top/bottom) by calling the plotBinaryTree function.
 
 There are many examples showing how to use these functions in the notebook.
 
-Below we show different 1D Tree-only visualizations of a sample jet generated with our model that represents a W boson jet (also the same jet as in the 2D heat clustermaps visualizations section).  We show the values of **p** =(p_y,p_z) for each node and the scale Delta for the splitting of the inner nodes (for the truth jet data).
+Below we show different 1D Tree-only visualizations of a sample jet generated with our model that represents a W boson jet (also the same jet as in the 2D heat clustermaps visualizations section below).  We show the values of **p** =(p_y,p_z) for each node and the scale Delta for the splitting of the inner nodes (for the truth jet data).
 
 ![Fig.1D1](plots/1DTreeOnly/figTruth_jet10.png)
 
 ##### Fig. 1: 1D Tree-only visualization of the truth level tree for a sample jet generated with our model. The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the truth tree (and is not related to the particle momentum **p**).
 
+<pre>
+
+</pre>
  <img src="https://github.com/SebastianMacaluso/VisualizeBinaryTrees/blob/master/plots/1DTreeOnly/figAntikt_jet10.png" height="800"  align="center">
  
  ##### Fig. 2: 1D Tree-only visualization of a sample jet generated with our model that was reclustered with the anti-kt algorithm. We can see the *ladder* like structure that is typically obtained for this algorithm. The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the reclustered tree.
@@ -108,7 +111,7 @@ Below we show diffrent visualizations and comparisons of the same jet (also the 
 
 **Relevant Structure**:
 
-- [`binaryTreeStructure`](binaryTreeStructure.ipynb): Notebook explains the structure of the jet tree dictionaries.
+- [`binaryTreeStructure`](binaryTreeStructure.ipynb): notebook that explains the structure of the jet tree dictionaries.
 - [`visualize1DTree.ipynb`](visualize1DTree.ipynb): contains the *1D tree-only* jet visualizations.
 - [`visualizeClusterMap.ipynb`](visualizeClusterMap.ipynb): contains the *2D heat clustermaps* of the jets.
 - [`data`](data/): Dir with the jet dictionaries data.
