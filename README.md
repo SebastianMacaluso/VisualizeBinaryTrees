@@ -47,6 +47,9 @@ Below we show different 1D Tree-only visualizations of a sample jet generated wi
  
  ##### Fig. 2: 1D Tree-only visualization of a sample jet generated with our model that was reclustered with the anti-kt algorithm. We can see the *ladder* like structure that is typically obtained for this algorithm. The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the reclustered tree.
 
+<pre>
+
+</pre>
 ![Fig.1D3](plots/1DTreeOnly/figComparisonKtTruthTop_jet10.png)
 ![Fig.1D4](plots/1DTreeOnly/figComparisonKtTruthBottom_jet10.png)
 
@@ -57,7 +60,7 @@ Below we show different 1D Tree-only visualizations of a sample jet generated wi
 
 
 Given a tree structure, 2D heat clustermaps visualizations are obtained with [`visualizeClusterMap.ipynb`](visualizeClusterMap.ipynb).
-Specifically, given a jet (the set of its constituents), visualization for the different trees obtained with each clustering algorithm (and the truth tree) are displayed. 
+Specifically, given a jet (the set of its constituents), visualizations for the different trees obtained with each clustering algorithm (and the truth tree) are displayed. 
 
 There are 2 functions for visualization:
 
@@ -65,15 +68,15 @@ a) function **heat_dendrogram**: Create  a heat dendrogram clustermap.
 - 1) If only one jet is given as input, both rows and columns are ordered according to that jet tree.
 - 2) If two jets are given as input:
         - If *truthJet* and *recluster_jet1*, the visualization shows the heat data map of the truth jet, with columns ordered according to the truth jet and rows according to recluster_jet1.
-        - If *recluster_jet1* and *recluster_jet2*, the visualization shows the heat data map of recluster_jet2, with columns ordered according to the recluster_jet1 and rows according to recluster_jet2.
+        - If *recluster_jet1* and *recluster_jet2*, the visualization shows the heat data map of recluster_jet1, with columns ordered according to the recluster_jet1 and rows according to recluster_jet2.
 
 b) function **dendrogramDiff**: Given two jet algorithms heat data matrices, we reorder the heat matrices according to the truth jet order (order in which leaves are accessed when traversing the truth tree) and take the difference.
 
 Both functions have the same arguments:
-- Truth jet dictionary
+- truthJet: Truth jet dictionary
 - recluster_jet1: reclustered jet 1
 - recluster_jet2: reclustered jet 2
-- full_path: Bool. If True, then use the total number of steps to connect a pair of leaves as the heat data. If False, then given a pair of jet constituents {i,j} and the number of steps needed for each constituent to reach their closest common ancestor {S_i,S_j}, the heat map scale represents the maximum number of steps, i.e. max{S_i,S_j}.
+- full_path: Bool. If True, then use the total number of steps to connect a pair of leaves of the tree as the heat data. If False, then given a pair of jet constituents {i,j} and the number of steps needed for each constituent to reach their closest common ancestor {S_i,S_j}, the heat map scale represents the maximum number of steps, i.e. max{S_i,S_j}.
 - FigName: Dir and location to save a plot.
 
 
@@ -87,7 +90,7 @@ Note: The length of the connections among nodes for dendrogram diagrams shown at
 - The distance measure d_ij between nodes, for the {Kt, CA, Antikt} algorithms. 
 - An integer starting at 0 and increasing by one each time a node is added, for the truth case. 
 
-Below we show diffrent visualizations and comparisons of the same jet (also the same jet as in the 1D Tree-only visualizations section).
+Below we show different visualizations and comparisons of the same jet (also the same jet as in the 1D Tree-only visualizations section).
 
 
 
@@ -98,22 +101,27 @@ Below we show diffrent visualizations and comparisons of the same jet (also the 
 
 ##### Fig. 4: Heat clustermap plot of the tree corresponding to the truth jet data (the tree generated with the [`Toy Generative Model`](https://github.com/SebastianMacaluso/ToyJetsShower))
 
+<pre>
 
+</pre>
 ![Fig.2](plots/heatClustermap/figAntiktAntikt_singlepath_jet10.png)
 
-##### Fig. 5: Heat clustermap plot of the tree after reclustering with the Anti-kt algorithm.
+##### Fig. 5: Heat clustermap plot of the tree after reclustering with the anti-kt algorithm.
 
+<pre>
+
+</pre>
 ![Fig.3](plots/heatClustermap/figDiffTruthKt_singlepath_jet10.png)
-##### Fig. 6: Plot for the heat clustermap difference between the truth jet and the Kt reclustered one. The closer the trees substrucre is, the closer to cero the values in each entry. 
+##### Fig. 6: Plot for the heat clustermap difference between the truth jet and the kt reclustered one. The closer the trees substrucre is, the closer to cero the values in each entry. 
 
 
 
 
 **Relevant Structure**:
 
-- [`binaryTreeStructure`](binaryTreeStructure.ipynb): notebook that explains the structure of the jet tree dictionaries.
+- [`binaryTreeStructure.ipynb`](binaryTreeStructure.ipynb): notebook that explains the structure of the jet tree dictionaries.
 - [`visualize1DTree.ipynb`](visualize1DTree.ipynb): contains the *1D tree-only* jet visualizations.
-- [`visualizeClusterMap.ipynb`](visualizeClusterMap.ipynb): contains the *2D heat clustermaps* of the jets.
+- [`visualizeClusterMap.ipynb`](visualizeClusterMap.ipynb): contains the *2D heat clustermaps* visualizations of the jets.
 - [`data`](data/): Dir with the jet dictionaries data.
 - [`scripts`](scripts/): Dir with the code to generate the visualizations:
     - [`reclusterTree.py`](scripts/reclusterTree.py): recluster a jet following the {Kt, CA, Antikt} clustering algorithms.
