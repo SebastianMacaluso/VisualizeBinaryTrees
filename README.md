@@ -47,7 +47,7 @@ Below we show different 1D Tree-only visualizations of a sample jet generated wi
 ![Fig.1D3](plots/1DTreeOnly/figComparisonKtTruthTop_jet10.png)
 ![Fig.1D4](plots/1DTreeOnly/figComparisonKtTruthBottom_jet10.png)
 
-##### Fig. 1: 1D Tree-only comparison of a sample jet generated with our model, between the kt reclustered tree (top) and the truth tree (bottom). The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the truth tree.
+##### Fig. 3: 1D Tree-only comparison of a sample jet generated with our model, between the kt reclustered tree (top) and the truth tree (bottom). The horizontal ordering of the leaves corresponds to the order in which the leaves are accessed when traversing the truth tree.
 
 
 ## 2D heat clustermaps visualizations
@@ -93,16 +93,16 @@ Below we show diffrent visualizations and comparisons of the same jet (also the 
 
 ![Fig.1](plots/heatClustermap/figTruthTruth_singlepath_jet10.png)
 
-##### Fig. 1: Heat clustermap plot of the tree corresponding to the truth jet data (the tree generated with the [`Toy Generative Model`](https://github.com/SebastianMacaluso/ToyJetsShower))
+##### Fig. 4: Heat clustermap plot of the tree corresponding to the truth jet data (the tree generated with the [`Toy Generative Model`](https://github.com/SebastianMacaluso/ToyJetsShower))
 
 
 ![Fig.2](plots/heatClustermap/figAntiktAntikt_singlepath_jet10.png)
 
-##### Fig. 2: Heat clustermap plot of the tree after reclustering with the Anti-kt algorithm.
+##### Fig. 5: Heat clustermap plot of the tree after reclustering with the Anti-kt algorithm.
 
 ![Fig.3](plots/heatClustermap/figDiffTruthKt_singlepath_jet10.png)
 
-##### Fig. 3: Plot for the heat clustermap difference between the truth jet and the Kt reclustered one. The closer the trees substrucre is, the closer to cero the values in each entry. 
+##### Fig. 6: Plot for the heat clustermap difference between the truth jet and the Kt reclustered one. The closer the trees substrucre is, the closer to cero the values in each entry. 
 
 
 
@@ -125,7 +125,7 @@ Below we show diffrent visualizations and comparisons of the same jet (also the 
 ##### **Running locally as a python package:**
 
 
-1. Clone the VisualizeBinaryTrees repository
+1. Clone the *VisualizeBinaryTrees* repository
 2. `cd VisualizeBinaryTrees`
 3. `make`
 
