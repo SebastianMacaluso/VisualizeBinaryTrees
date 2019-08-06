@@ -83,7 +83,7 @@ Both functions have the same arguments:
 Usage:
 - Select the *input_dir* directory with the jets dictionaries.
 - Select the *Input_jet* filename for the visualizations.
-- Optional: input a name and location to save an image as the *outFilename* argument of the heat_dendrogram or dendrogramDiff functions.
+<!--- Optional: input a name and location to save an image as the *outFilename* argument of the heat_dendrogram or dendrogramDiff functions.-->
 
 
 Note: The length of the connections among nodes for dendrogram diagrams shown at the sides of the clustermaps, is given by:
