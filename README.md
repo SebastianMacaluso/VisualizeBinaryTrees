@@ -112,7 +112,7 @@ Below we show different visualizations and comparisons of the same jet (also the
 
 </pre>
 ![Fig.3](plots/heatClustermap/figDiffTruthKt_singlepath_jet10.png)
-##### Fig. 6: Plot for the heat clustermap difference between the truth jet and the kt reclustered one. The closer the trees substrucre is, the closer to cero the values in each entry. 
+##### Fig. 6: Plot for the heat clustermap difference between the truth jet and the kt reclustered one. The closer the trees substructure is, the closer to cero the values in each entry. 
 
 
 
