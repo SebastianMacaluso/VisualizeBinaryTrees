@@ -203,6 +203,9 @@ def plotBinaryTree(
 
 
 
+
+
+
 def visualizeTreePair(
 		in_jet1,
 		in_jet2,
@@ -249,13 +252,20 @@ def visualizeTreePair(
 			jetBottom = in_jet2
 
 			node_id = jetBottom["node_id"]
-		else:
-			jetTop = reclusterTree.recluster(in_jet1, alpha=int(alpha_jet2),
-				                                      save=False)
-			# jetBottom = in_jet1
 
-			jetBottom = reclusterTree.recluster(in_jet1, alpha=int(alpha_jet1),
-				                                      save=False)
+		elif in_jet2["algorithm"] == "truth":
+			jetTop = in_jet2
+			jetBottom = in_jet1
+
+			node_id = jetBottom["node_id"]
+
+		else:
+			jetTop = reclusterTree.recluster(in_jet1,
+			                                 alpha=int(alpha_jet2),
+			                                 save=False)
+			jetBottom = reclusterTree.recluster(in_jet1,
+			                                    alpha=int(alpha_jet1),
+			                                    save=False)
 			node_id = jetTop["node_id"]
 
 
@@ -283,72 +293,3 @@ def visualizeTreePair(
 
 
 
-
-
-# def visualizeTreePair(
-# 		in_jet1,
-# 		in_jet2,
-# 		pySort = False,
-# 		pTSort = False,
-# 		truthOrder=True,
-# 		label=True,
-# 		figFormat ="pdf",
-# ):
-# 	'''
-# 	Call plotBinaryTree function to create a representation of the jet tree with graphviz Digraph.
-# 	Compares 2 trees (top/bottom). It loads the 2 jet dictionaries.
-#
-# 	Args:
-# 	- in_jet1: jet 1.
-# 	- in_jet2: jet 2.
-# 	- truthOrder: if True, then the leaves are ordered according to the truth jet. If False, then they are ordered according to the other jet.
-# 	- pySort: sort leaves in increasing py.
-# 	- pTSort: sort leaves in increasing pT=abs(py).
-# 	- label: if True, then add labels with info to each node.
-#
-# 	Note:
-# 	- node_id: index of the node id of each leaf  in the clustering algorithm used to get the list of leaves that were
-# 	  subsequently reclustered (currently using the truth level tree order). So, if we sort the node id's of the new algorithm
-# 	  according to node_id_in, we get the list of leaves in the order of the original algorithm.
-#
-# 	'''
-#
-# 	if truthOrder:
-# 		if in_jet1["algorithm"] == "truth":
-# 			jetTop = in_jet2
-# 			jetBottom = in_jet1
-# 		else:
-# 			jetTop = in_jet1
-# 			jetBottom = in_jet2
-#
-# 		node_id = jetTop["node_id"]
-#
-# 	else:
-# 		if in_jet1["algorithm"] == "truth":
-# 			jetTop = in_jet1
-# 			jetBottom = in_jet2
-# 		else:
-# 			jetTop = in_jet2
-# 			jetBottom = in_jet1
-#
-# 		node_id = jetBottom["node_id"]
-#
-# 	tree1 = plotBinaryTree(
-# 		jetTop,
-# 		label = label,
-# 		node_id_in = node_id,
-# 		pySort = pySort,
-# 		pTSort = pTSort,
-# 		truthOrder = truthOrder,
-# 		figFormat = figFormat,
-# 	)
-#
-# 	tree2 = plotBinaryTree(
-# 		jetBottom,
-# 		label = label,
-# 		pySort = pySort,
-# 		pTSort = pTSort,
-# 		figFormat= figFormat,
-# 	)
-#
-# 	return tree1, tree2
